@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout/shopViewLayout :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container mt-4 p-4">
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+
+                    <div class="card-header">
+                        <h4>Register</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="#" th:action="@{/customer/save-customer}" th:object="${customer}" method="post">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" class="form-control" th:field="*{name}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="text" id="password" class="form-control" th:field="*{password}">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="zipCode">Zipd Code</label>
+                                <input type="text" class="form-control" id="zipCode" th:field="*{address.zipCode}">
+                            </div>
+                            <div class="form-group">
+                                <label for="streetName">Street Name</label>
+                                <input type="text" class="form-control" id="streetName" th:field="*{address.streetName}">
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="text" class="form-control" id="phoneNumber" th:field="*{address.phoneNumber}">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" th:field="*{address.email}">
+                            </div>
+
+
+                            <button type="submit" class="btn btn-outline-primary">Register</button>
+
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

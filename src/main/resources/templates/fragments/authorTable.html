@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<table th:fragment="authorTable" class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>DateOfBirth</th>
+      <th>ZipCode</th>
+      <th>PhoneNumber</th>
+      <th>Street</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each=" aut : ${authors}">
+      <td th:text="${aut.id}"></td>
+      <td th:text="${aut.name}"></td>
+      <td th:text="${aut.dateOfBirth}"></td>
+      <td th:text="${aut.address.zipCode}"></td>
+      <td th:text="${aut.address.streetName}"></td>
+      <td th:text="${aut.address.phoneNumber}"></td>
+      <td th:text="${aut.address.email}"></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

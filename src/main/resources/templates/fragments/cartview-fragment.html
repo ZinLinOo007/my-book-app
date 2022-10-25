@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="cardViewe">
+    <div class="alert alert-success" role="alert" th:if="${cartItems.isEmpty()}">
+        <h3>No Items In Cart!</h3>
+
+    </div>
+<form th:action="@{/customer/register}" method="post" th:object="${bookDto}">
+    <table class="table table-striped" th:if="${!cartItems.isEmpty()}">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="item : ${cartItems}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.title}"></td>
+            <td th:text="${item.price}"></td>
+
+            <td>
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="number"   step="1"   min="1"     class="form-control" th:field="*{bookNumberList}">
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <a th:href="@{'/cart/delete'+ ${item.id}}" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="p-5">
+        <a th:href="@{/card/clear}" class="btn btn-outline-danger">Clear Cart</a>
+<!--        <a href="#" class="btn btn-outline-primary">Check Out</a>-->
+        <a th:href="@{/shop/show-all-books}" class="btn btn-outline-info">Continue Shopping</a>
+        <button type="submit" class="btn btn-outline-info">CheckOut</button>
+
+    </div>
+</form>
+</div>
+
+</body>
+</html>
